@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1209
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messenger-Kings", "Messenger-Kings\Messenger-Kings.csproj", "{680F7A85-8E0F-4BDA-98BB-DCE78E13E3E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messenger-Kings.Tests", "Messenger-Kings.Tests\Messenger-Kings.Tests.csproj", "{797D3362-05F4-4BA8-9F3A-795E4DDEB11B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{680F7A85-8E0F-4BDA-98BB-DCE78E13E3E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{680F7A85-8E0F-4BDA-98BB-DCE78E13E3E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{680F7A85-8E0F-4BDA-98BB-DCE78E13E3E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{680F7A85-8E0F-4BDA-98BB-DCE78E13E3E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{797D3362-05F4-4BA8-9F3A-795E4DDEB11B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{797D3362-05F4-4BA8-9F3A-795E4DDEB11B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{797D3362-05F4-4BA8-9F3A-795E4DDEB11B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{797D3362-05F4-4BA8-9F3A-795E4DDEB11B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1F06FD9-DA43-4E32-9239-287C9FC45942}
+	EndGlobalSection
+EndGlobal

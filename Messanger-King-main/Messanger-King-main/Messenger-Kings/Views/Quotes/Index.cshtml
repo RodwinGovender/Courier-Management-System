@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Messenger_Kings.Models.Quote>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List Of Quotes</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientCategory.ClientCat_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote_PickupAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote_DeliveryAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote_Distance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote_Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote_Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Item_Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote_length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote_Height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote_Width)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quote_Weight)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientCategory.ClientCat_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote_PickupAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote_DeliveryAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote_Distance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote_Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote_Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Item_Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote_length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote_Height)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote_Width)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quote_Weight)
+        </td>
+       
+    </tr>
+}
+
+</table>

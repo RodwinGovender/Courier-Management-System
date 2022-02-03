@@ -1,0 +1,96 @@
+﻿@model Messenger_Kings.Models.Waybill
+
+@{
+    ViewBag.Title = "ManagePackageDispatch";
+}
+
+<h2>Warehouse</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Package Check-Out</h4>
+    <hr />
+    @Html.HiddenFor(model => model.Waybill_ID)
+    @Html.HiddenFor(model => model.Order_ID)
+    @Html.HiddenFor(model => model.Track_ID)
+    @Html.HiddenFor(model => model.Status_ID)
+    @Html.HiddenFor(model => model.Date_Packages_CheckedIN)
+    @Html.HiddenFor(model => model.Date_Packages_CheckedOut)
+
+    <div class="row">
+        <div class="col-sm-5">
+            <h4>Order Information</h4>
+            <p><b>Tracking Number: @ViewBag.Trackings.Track_ID</b></p>
+            <p>Pickup Date: @ViewBag.PickupDate</p>
+            <p>Scheduled Delivery Date: @ViewBag.DeliveryDate</p>
+        </div>
+
+        <div class="col-sm-4">
+            <h4>Shipping From</h4>
+            <p>@ViewBag.Trackings.Order.Bookings.Client.Client_Name @ViewBag.Trackings.Order.Bookings.Client.Client_Surname</p>
+            <p>@ViewBag.Trackings.Order.Bookings.Quote.Quote_PickupAddress</p>
+
+        </div>
+
+        <div class="col-sm-3">
+            <h4>Shipping To</h4>
+            <p>@ViewBag.Trackings.Order.Bookings.Book_RecipientName @ViewBag.Trackings.Order.Bookings.Book_RecipientSurname</p>
+            <p>@ViewBag.Trackings.Order.Bookings.Quote.Quote_DeliveryAddress</p>
+        </div>
+
+    </div>
+
+
+    <hr />
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.Label("Dispatched Date", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Date_Packages_CheckedOut, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Date_Packages_CheckedOut, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.Date_Packages_CheckedIN, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Date_Packages_CheckedIN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Date_Packages_CheckedIN, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.Order_ID, "Order_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Order_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Order_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+
+
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.Track_ID, "Track_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Track_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Track_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Check Out" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Messenger_Kings.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Approved Orders</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+           Client First Name
+        </th>
+        <th>
+            Driver First Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_DateTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bookings.Client.Client_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Driver.Driver_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order_DateTime)
+        </td>
+       
+       
+    </tr>
+}
+
+</table>

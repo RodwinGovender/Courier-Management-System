@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Messenger_Kings.Models.Tracking>
+
+@{
+    ViewBag.Title = "WaybillList";
+}
+
+<h2>List of Waybills</h2>
+<hr />
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        
+            <div class="col-md-3">
+                <div class="shadow p-3 mb-5 bg-white rounded">
+
+                    <p>Client Name: @Html.DisplayFor(modelItem => item.Order.Bookings.Client.Client_Name) @Html.DisplayFor(modelItem => item.Order.Bookings.Client.Client_Surname)</p>
+                    <p>Tracking No: @Html.DisplayFor(modelItem => item.Track_ID)</p>
+
+                    <p>Pick-up date: @Html.DisplayFor(modelItem => item.Order.Bookings.Book_PickupDate)</p>
+                    <a href='@Url.Action("Waybill", "Trackings", new { id = item.Track_ID}, null)' class="btn btn-success">View Waybill</a>
+                    
+                </div>
+            </div>
+     }
+    </div>
+
+
+

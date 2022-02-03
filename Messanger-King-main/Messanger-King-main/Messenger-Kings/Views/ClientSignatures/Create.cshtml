@@ -1,0 +1,93 @@
+﻿@model Messenger_Kings.Models.ClientSignature
+
+@{
+    ViewBag.Title = "Create";
+} 
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <br />
+        <br />
+        <br />
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.Driver_ID)
+        @Html.HiddenFor(model => model.Order_ID)
+        @Html.HiddenFor(model => model.Sign_Date)
+        @Html.HiddenFor(model => model.Recipient_Type)
+
+        <div class="row">
+            <div class="col-sm-5">
+                <h4>Order Information</h4>
+                <p><b>Tracking Number: @ViewBag.Trackings.Track_ID</b></p>
+                <p>Pickup Date: @ViewBag.PickupDate</p>
+                <p>Delivery Date: @ViewBag.DeliveryDate</p>
+            </div>
+
+            <div class="col-sm-4">
+                <h4>Shipping From</h4>
+                <p>@ViewBag.Trackings.Order.Bookings.Client.Client_Name @ViewBag.Trackings.Order.Bookings.Client.Client_Surname</p>
+                <p>@ViewBag.Trackings.Order.Bookings.Quote.Quote_PickupAddress</p>
+
+            </div>
+
+            <div class="col-sm-3">
+                <h4>Shipping To</h4>
+                <p>@ViewBag.Trackings.Order.Bookings.Book_RecipientName @ViewBag.Trackings.Order.Bookings.Book_RecipientSurname</p>
+                <p>@ViewBag.Trackings.Order.Bookings.Quote.Quote_DeliveryAddress</p>
+            </div>
+
+        </div>
+
+
+        <hr />
+
+        @if (ViewBag.Trackings.Track_Message == "Out for Pickup")
+        {
+            <h4><b>Pickup confirmation</b></h4>
+        }
+        else
+        {
+            <h2>Delivery confirmation</h2>
+        }
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MySignature, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MySignature, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MySignature, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SignedBy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SignedBy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SignedBy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Confirm" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+
+@section Scripts {
+    <script src="~/Scripts/signature_pad.min.js"></script>
+    <script src="~/Scripts/SignaturePadInit.js"></script>
+}

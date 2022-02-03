@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    @helper ValidatEntry()
+    {
+        Messenger_Kings.Models.ApplicationDbContext db = new Messenger_Kings.Models.ApplicationDbContext();
+        bool status = false;
+        var userId = User.Identity.GetUserId();
+        var IdNumber = (from s in db.Clients
+                        where s.Client_Email == userId
+                        select s.Client_IDNo).FirstOrDefault();
+
+        var FirstName = (from s in db.Clients
+                         where s.Client_ID == userId
+                         select s.Client_Name).FirstOrDefault();
+
+        var LastName = (from s in db.Clients
+                        where s.Client_ID == userId
+                        select s.Client_Surname).FirstOrDefault();
+
+        var ContactNumber = (from s in db.Clients
+                             where s.Client_ID == userId
+                             select s.Client_Cellnumber).FirstOrDefault();
+
+        var PhysicalAddress = (from s in db.Clients
+                               where s.Client_ID == userId
+                               select s.Client_Address).FirstOrDefault();
+
+        if (FirstName != null && LastName != null && ContactNumber != null && PhysicalAddress != null)
+        {
+            status = true;
+        }
+
+        if (status == true)
+        {
+            var Category = (from s in db.Clients
+                            where s.Client_ID == userId
+                            select s.ClientCategory.ClientCat_Type).FirstOrDefault();
+            if (Category.ToUpper() == "On contract".ToUpper())
+            {
+                @Html.ActionLink("Banking", "Edit", "Banks")
+                <br />
+            }
+
+            @Html.ActionLink("Personal Details", "Details", "Clients")
+            <br />
+         
+        }
+
+    }
+
+    <div class="col-md-2">
+        @ValidatEntry()
+    </div>
+}

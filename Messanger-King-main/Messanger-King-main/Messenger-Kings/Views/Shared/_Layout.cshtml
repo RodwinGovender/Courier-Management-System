@@ -1,0 +1,428 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Layout/Boostrap/img/download.jpg" rel="icon">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - #Codeshedding</title>
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @*<script type="text/javascript" src="Scripts/bootstrap.min.js"></script>
+        <script type="text/javascript" src="Scripts/jquery-3.3.1.js"></script>
+        <script type="text/javascript" src="Scripts/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>*@
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    @*<link href="@Url.Content("Scripts/jquery-3.3.1.js")" rel="stylesheet" />
+        <link href="@Url.Content("Scripts/jquery-3.3.1.min.js")" rel="stylesheet" />
+        <link href="@Url.Content("~/Scripts/bootstrap.js")" rel="stylesheet" />
+        <link href="@Url.Content("~/Scripts/bootstrap.min.js")" rel="stylesheet" />*@
+
+    <script src="https://bootswatch.com/_vendor/jquery/dist/jquery.min.js"></script>
+    <script src="https://bootswatch.com/_vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @if (User.IsInRole("Admin") || User.IsInRole("Driver") || User.IsInRole("Employee"))
+    {
+        <style>
+
+
+
+        body { padding-top: 0px; padding-bottom: 20px; background: url("https://i.imgur.com/WbH9eKJ.jpeg") no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
+        </style>
+    }
+    else
+    {
+        <style>
+
+
+
+        body { padding-top: 0px; padding-bottom: 20px; background: url("https://i.imgur.com/nVHAzWz.jpeg") no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
+        </style>
+
+
+
+    }
+    <style>
+
+
+
+        .bg-dark {
+            background-color: #640000 !important;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #640000;
+            border-color: #e3e3e3;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #640000;
+            color: white;
+            text-align: center;
+        }
+
+        h2 {
+            display: block;
+            font-size: 2.0em;
+            margin-top: 0.83em;
+            margin-bottom: 0.83em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+        }
+
+        h1 {
+            display: block;
+            font-size: 2.2em;
+            margin-top: 0.83em;
+            margin-bottom: 0.83em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="@Url.Action("Index", "Home")">Messenger King</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                @if (!User.IsInRole("Admin") && !User.IsInRole("Driver") && !User.IsInRole("Employee"))
+                {
+
+
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Create", "Quotes")">Make Quote</a>
+    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("MyTracking", "Trackings")">Track a Package</a>
+                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("About", "Home")">About</a>
+                                    </li>
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="@Url.Action("Contact", "Home")">Contact</a>
+                                                    </li>
+}
+
+                @if (User.IsInRole("Client"))
+                {
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Details", "Clients")">My Profile</a>
+    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Bookings")">Booking History</a>
+                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="@Url.Action("Win", "Spins")">Rewards</a>
+                                    </li>
+}
+                @if (User.IsInRole("Admin"))
+                {
+
+
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Attention</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="@Url.Action("OrderList", "Orders")">New Bookings</a>
+            <a class="dropdown-item" href="@Url.Action("Index", "Orders")">View Approved Bookings</a>
+        </div>
+    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Waybills</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="@Url.Action("WaybillList", "Trackings")">New Waybills</a>
+                            <a class="dropdown-item" href="@Url.Action("AllWaybills", "Trackings")">View all Waybills</a>
+                        </div>
+                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Warehouse Inventory</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="@Url.Action("Index", "Waybills")">View stored Packages</a>
+
+                                        </div>
+                                    </li>
+
+
+
+                                                    <li class="nav-item dropdown">
+                                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="@Url.Action("Create", "AccountCategories")">Add Account Category</a>
+                                                            <a class="dropdown-item" href="@Url.Action("Index", "AccountCategories")">View All Categories</a>
+                                                        </div>
+                                                    </li>
+
+
+
+
+                                                                    <li class="nav-item dropdown">
+                                                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Bank</a>
+                                                                        <div class="dropdown-menu">
+                                                                            <a class="dropdown-item" href="@Url.Action("Create", "BankCategories")">Add Bank Category</a>
+                                                                            <a class="dropdown-item" href="@Url.Action("Index", "BankCategories")">View All Categories</a>
+                                                                        </div>
+                                                                    </li>
+
+
+                                                                                    <li class="nav-item dropdown">
+                                                                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Client</a>
+                                                                                        <div class="dropdown-menu">
+                                                                                            <a class="dropdown-item" href="@Url.Action("Create", "ClientCategories")">Add Client Category</a>
+                                                                                            <a class="dropdown-item" href="@Url.Action("Index", "ClientCategories")">View All Categories</a>
+                                                                                        </div>
+                                                                                    </li>
+
+
+
+                                                                                                    <li class="nav-item dropdown">
+                                                                                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Drivers</a>
+                                                                                                        <div class="dropdown-menu">
+                                                                                                            <a class="dropdown-item" href="@Url.Action("Index", "Drivers")">View All Drivers</a>
+                                                                                                        </div>
+                                                                                                    </li>
+
+                                                                                                                    <li class="nav-item dropdown">
+                                                                                                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Quotes</a>
+                                                                                                                        <div class="dropdown-menu">
+                                                                                                                            <a class="dropdown-item" href="@Url.Action("Index", "Quotes")">View All Quotes</a>
+                                                                                                                        </div>
+                                                                                                                    </li>
+
+
+                                                                                                                                    <li class="nav-item dropdown">
+                                                                                                                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Rates</a>
+                                                                                                                                        <div class="dropdown-menu">
+                                                                                                                                            <a class="dropdown-item" href="@Url.Action("Create", "Rates")">Add Rates</a>
+                                                                                                                                            <a class="dropdown-item" href="@Url.Action("Index", "Rates")">View Current Rates</a>
+                                                                                                                                        </div>
+                                                                                                                                    </li>
+
+
+
+                                                                                                                                                    <li class="nav-item dropdown">
+                                                                                                                                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Roles</a>
+                                                                                                                                                        <div class="dropdown-menu">
+                                                                                                                                                            <a class="dropdown-item" href="@Url.Action("AddRole", "Roles")">Add Role</a>
+                                                                                                                                                            <a class="dropdown-item" href="@Url.Action("Index", "Roles")">View Current Roles</a>
+                                                                                                                                                        </div>
+                                                                                                                                                    </li>
+}
+                @if (User.IsInRole("Driver"))
+                {
+
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Edit", "Drivers")">My Profile</a>
+    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("DeliveryList", "Orders")">Delivery List</a>
+                    </li>
+}
+
+                @if (User.IsInRole("Employee"))
+                {@*<li class="nav-item">@Html.ActionLink("List of Packages", "Index", "Waybills")</li>
+                        <li class="nav-item">@Html.ActionLink("Home", "Store", "Waybills")</li>*@
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Index", "Waybills")">List of Packages</a>
+                                </li>
+
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="@Url.Action("Store", "Waybills")">Check In/Out</a>
+                                                </li>
+}
+            </ul>
+
+            @Html.Partial("_LoginPartial")
+
+        </div>
+    </nav>
+
+
+
+    @*<div class="d-print-none">
+        <div class="col-md-2">
+            <br />
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Account Categories
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    @Html.ActionLink("Add Account Category", "Create", "AccountCategories")<br />
+                    @Html.ActionLink("View All Categories", "Index", "AccountCategories")<br />
+                </div>*@
+    @*</div>
+                <br />
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Bank Categories
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @Html.ActionLink("Add Bank Category", "Create", "BankCategories")<br />
+                        @Html.ActionLink("View All Categories", "Index", "BankCategories")<br />
+                    </div>
+                </div>
+                <br />
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Client Categories
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @Html.ActionLink("Add Client Category", "Create", "ClientCategories")<br />
+                        @Html.ActionLink("View All Categories", "Index", "ClientCategories")<br />
+                    </div>
+                </div>
+                <br />
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Drivers
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @Html.ActionLink("View All Drivers", "Index", "Drivers")<br />
+
+                    </div>
+                </div>
+                <br />
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Documents
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @Html.ActionLink("View Client Document", "Index", "Documents")<br />
+                    </div>
+                </div>
+                <br />
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Quotes
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @Html.ActionLink("View All Quotes", "Index", "Quotes")<br />
+                    </div>
+                </div>
+                <br />
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pending Orders
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @Html.ActionLink("Recent Bookings", "OrderList", "Orders")<br />
+                        @Html.ActionLink("View Approved Orders", "Index", "Orders")<br />
+                    </div>
+                </div>
+                <br />
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Rates
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                        @Html.ActionLink("Add Rates", "Create", "Rates")<br />
+                        @Html.ActionLink("View Current Rates", "Index", "Rates")<br />
+                    </div>
+                </div>
+                <br />
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Roles
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                        @Html.ActionLink("Add Role", "AddRole", "Roles")<br />
+                        @Html.ActionLink("View Current Roles", "Index", "Roles")<br />
+                    </div>
+                </div>
+                <br />
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Waybills
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                        @Html.ActionLink("Print Waybills", "WaybillList", "Trackings")<br />
+                        @Html.ActionLink("View all Past Waybills", "AllWaybills", "Trackings")<br />
+                    </div>
+                </div>
+                <br />
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Warehouse Inventory
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                        @Html.ActionLink("View stored Packages", "Index", "Waybills")<br />
+
+                    </div>
+                </div>
+
+            </div>
+        </div>*@
+
+
+
+
+
+
+<div class="container body-content">
+    @RenderBody()
+
+
+
+        @*<hr />*@
+        <div class="footer">
+            <p>&copy; @DateTime.Now.Year - Messenger King</p>
+        </div>
+    </div>
+
+
+    @*@Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/5fc55a67920fc91564cc2513/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+
+
+</body>
+</html>

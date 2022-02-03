@@ -1,0 +1,121 @@
+﻿@model Messenger_Kings.Models.Quote
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Cancel My Quote</h2>
+
+<hr />
+<h3>Are You Sure You Want To Cancel This Quote?</h3>
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientCategory.ClientCat_Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientCategory.ClientCat_Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote_PickupAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote_PickupAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote_DeliveryAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote_DeliveryAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote_Distance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote_Distance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote_Cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote_Cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Item_Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item_Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote_length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote_length)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote_Height)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote_Height)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote_Width)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote_Width)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote_Weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote_Weight)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Yes" class="btn btn-success" />
+            <a href='@Url.Action("Details", "Quotes", new { id = Model.Quote_ID }, null)' class="btn btn-secondary">No</a>
+        </div>
+    }
+</div>

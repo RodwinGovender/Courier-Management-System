@@ -1,0 +1,185 @@
+﻿@model Messenger_Kings.Models.Quote
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<br />
+<br />
+
+    <div class="shadow p-3 mb-5 bg-white rounded">
+        <h2>Review Your Quote</h2>
+        <hr />
+        <div class="row">
+
+            <div class="col-sm-4">
+
+                <div class="card bg-light mb-3" style="max-width: 20rem;">
+                    <div class="card-header"><b>Quote Details📌</b></div>
+                    <div class="card-body">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ClientCategory.ClientCat_Type)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ClientCategory.ClientCat_Type)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Quote_Date)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Quote_Date)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Quote_PickupAddress)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Quote_PickupAddress)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Quote_DeliveryAddress)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Quote_DeliveryAddress)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Quote_Distance)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Quote_Distance)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Quote_Description)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Quote_Description)
+                            </dd>
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-4">
+                <div class="card bg-light mb-3" style="max-width: 20rem;">
+                    <div class="card-header"><b>Package Details 📦</b></div>
+                    <div class="card-body">
+                        <dl class="dl-horizontal">
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Item_Quantity)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Item_Quantity)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Quote_length)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Quote_length)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Quote_Height)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Quote_Height)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Quote_Width)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Quote_Width)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Quote_Weight)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Quote_Weight)
+                            </dd>
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-sm-4">
+
+                <div class="card bg-light mb-3" style="max-width: 20rem;">
+                    <div class="card-header"><b>Proceed To Booking 📋</b></div>
+                    <div class="card-body">
+                        <h4 class="card-title">Quote Cost: <b>R @Html.DisplayFor(model => model.Quote_Cost) </b></h4>
+
+                        <p class="card-text">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <a href='@Url.Action("Create", "Bookings", new { id = Model.Quote_ID }, null)' class="btn btn-success">Proceed</a>
+                                </div>
+                                <div class="col-sm-3">
+
+                                    <a href='@Url.Action("Edit", "Quotes", new { id = Model.Quote_ID }, null)' class="btn btn-warning">Edit   </a>
+                                </div>
+                                <div class="col-sm-3">
+
+                                    <a href='@Url.Action("Delete", "Quotes", new { id = Model.Quote_ID }, null)' class="btn btn-secondary">Cancel</a>
+                                </div>
+
+                            </div>
+                        </p>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+        @*@Html.DisplayNameFor(model => model.ClientCategory.ClientCat_Type)
+
+
+
+        @Html.DisplayFor(model => model.ClientCategory.ClientCat_Type)
+
+
+        @Html.DisplayNameFor(model => model.Quote_Date)
+
+
+
+        @Html.DisplayFor(model => model.Quote_Date)*@
+
+
+
+
+
+
+
+
+    </div>
+

@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "ChartAnalysis";
+}
+
+<h2>ChartAnalysis</h2>
+<html>
+
+<head>
+    <style>
+        td {
+            padding: 0 15px;
+        }
+    </style>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        // Load Charts and the corechart package.
+        google.charts.load('current', { 'packages': ['corechart'] });
+
+        google.charts.load('current', { 'packages': ['bar'] });
+
+
+        // Draw the pie chart for the Anthony's pizza when Charts is loaded.
+        google.charts.setOnLoadCallback(drawStuff);
+
+        // Draw the pie chart for the Anthony's pizza when Charts is loaded.
+        google.charts.setOnLoadCallback(drawStuff1);
+
+        // Callback that draws the pie chart for Anthony's pizza.
+        function drawStuff() {
+            var data = new google.visualization.arrayToDataTable([
+            ['Months of the year', 'Number of orders per month'],
+                    ["January", @ViewBag.Jan],
+                    ["February", @ViewBag.Feb],
+                    ["March", @ViewBag.March],
+                    ["April", @ViewBag.April],
+                    ["May", @ViewBag.May],
+                    ["June", @ViewBag.June],
+                    ["July", @ViewBag.July],
+                    ["August", @ViewBag.Aug],
+                    ["September", @ViewBag.Sept],
+                    ["October", @ViewBag.Oct],
+                    ["November", @ViewBag.Nov],
+                    ["December",  @ViewBag.Dec]
+
+            ]);
+
+            // Set options for Anthony's pie chart.
+            var options = {
+                title: 'Total Number of Orders Per Month',
+                width: 600,
+                height: 400,
+                legend: { position: 'none' },
+                chart: {
+
+
+                },
+                axes: {
+                    x: {
+                        0: { side: 'top', label: 'Orders For Each Month' } // Top x-axis.
+                    }
+                },
+                bar: { groupWidth: "70%" }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('Anthony_chart_div'));
+            // Convert the Classic options to Material options.
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        };
+        //---------------------------------------------------------------------------------------------------------
+
+                function drawStuff1() {
+            var data = new google.visualization.arrayToDataTable([
+            ['Months of the year', 'Number of orders per month'],
+                    ["January", @ViewBag.Jan1],
+                    ["February", @ViewBag.Feb1],
+                    ["March", @ViewBag.Mar1],
+                    ["April", @ViewBag.Apr1],
+                    ["May", @ViewBag.May1],
+                    ["June", @ViewBag.Jun1],
+                    ["July", @ViewBag.Jul1],
+                    ["August", @ViewBag.Aug1],
+                    ["September", @ViewBag.Sep1],
+                    ["October", @ViewBag.Oct1],
+                    ["November", @ViewBag.Nov1],
+                    ["December",  @ViewBag.Dec1]
+
+            ]);
+
+            // Set options for Anthony's pie chart.
+            var options = {
+                title: 'Total Made In Rands Per Month',
+                width: 600,
+                height: 400,
+                legend: { position: 'none' },
+                chart: {
+
+
+                },
+                axes: {
+                    x: {
+                        0: { side: 'top', label: 'Money Earned' } // Top x-axis.
+                    }
+                },
+                bar: { groupWidth: "70%" }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('Anthony1_chart_div'));
+            // Convert the Classic options to Material options.
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        };
+    </script>
+</head>
+<body>
+
+    <!--Table and divs that hold the pie charts-->
+    <table class="columns">
+        <tr>
+            <td><div id="Anthony_chart_div" style="border: 1px solid #ccc"></div></td>
+            <td><div id="Anthony1_chart_div" style="border: 1px solid #ccc"></div></td>
+
+        </tr>
+    </table>
+    <hr />
+    <h2>Other Statistics</h2>
+    <dl>
+        <dt>Total number of orders:</dt>
+        <dd>= @ViewBag.totalOrders</dd>
+
+
+    </dl>
+</body>
+</html>

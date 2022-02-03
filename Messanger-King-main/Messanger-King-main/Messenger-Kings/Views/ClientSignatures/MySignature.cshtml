@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Messenger_Kings.Models.ClientSignature>
+
+    @{
+    ViewBag.Title = "MySignature";
+    }
+
+    <h2>Proof of Pickup/Delivery</h2>
+    <hr />
+    @using (Html.BeginForm())
+{
+
+
+
+    foreach (var item in Model)
+    {
+
+
+
+
+
+    <div class="col-md-6">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+
+
+            @if (item.Recipient_Type == "Client")
+                {
+            <h4>Pickup Confirmed</h4>
+
+
+                }
+                else
+                {
+            <h4>Delivery Confirmed</h4>
+
+                }
+            <p>Signed By:  @Html.DisplayFor(modelItem => item.SignedBy)</p>
+            <p>Sign Date:  @Html.DisplayFor(modelItem => item.Sign_Date)</p>
+
+
+            <p>@Html.DisplayFor(modelItem => item.MySignature)</p>
+
+        </div>
+    </div>
+    }
+    <a href='@Url.Action("MyTrackingSearch", "Trackings", new { id = ViewBag.TrackID }, null)' class="btn btn-primary">Back</a>
+
+
+    @section Scripts {
+        <script src="~/Scripts/signature_pad.min.js"></script>
+        <script src="~/Scripts/SignaturePadInit.js"></script>
+    }
+}

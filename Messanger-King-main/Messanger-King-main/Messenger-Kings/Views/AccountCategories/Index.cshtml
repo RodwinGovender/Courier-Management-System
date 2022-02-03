@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Messenger_Kings.Models.AccountCategory>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Type of Account</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Account_Type)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account_Type)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AccountCat_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AccountCat_ID })
+        </td>
+    </tr>
+}
+
+</table>

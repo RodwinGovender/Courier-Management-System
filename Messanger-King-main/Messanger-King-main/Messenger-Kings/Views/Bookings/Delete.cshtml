@@ -1,0 +1,80 @@
+﻿@model Messenger_Kings.Models.Booking
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<br />
+<br />
+<div class="shadow p-3 mb-5 bg-white rounded">
+    <h2>Cancel My  Booking</h2>
+
+    <h3>Are You Sure You Want To Cancel This Booking?</h3>
+
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quote.Quote_PickupAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote.Quote_PickupAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_PickupDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_PickupDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_DeliveryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_DeliveryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_RecipientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_RecipientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_RecipientSurname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_RecipientSurname)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_TotalCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book_TotalCost)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Yes" class="btn btn-success" />
+            <a href='@Url.Action("Details", "Bookings", new { id = Model.Book_ID }, null)' class="btn btn-secondary">No</a>
+        </div>
+    }
+</div>

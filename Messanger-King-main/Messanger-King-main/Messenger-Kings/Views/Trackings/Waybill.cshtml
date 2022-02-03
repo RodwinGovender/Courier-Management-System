@@ -1,0 +1,121 @@
+﻿@model Messenger_Kings.Models.Tracking
+
+@{
+    ViewBag.Title = "Waybill";
+}
+
+    <html lang="en">
+
+    <head>
+        @*<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">*@
+
+
+
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="main.css">
+
+        <style>
+            img {
+                width: 200px;
+                display: block;
+            }
+
+            div img {
+                width: 200px;
+                display: block;
+            }
+        </style>
+        <script src="~/Scripts/qrcode/qrcode.js"></script>
+
+    </head>
+
+
+   
+
+
+    <body>
+        <div class="d-print-none">
+            <button class="btn btn-secondary" onclick="window.print()">Print Waybill</button>  @if (Model.Track_Message == "The Order Has Been Approved!")
+            {<a href='@Url.Action("WaybillStatusChange", "Trackings", new { id = Model.Track_ID }, null)' class="btn btn-primary">Successfully Printed</a>}
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <img src="~/img/Banner.jpg" style="width:100%; max-width:100%;">
+                <h2>Waybill</h2>
+                <h5 class="text-left" style="padding-top:10px;">Delivery Note</h5>
+                <p class="text-left">
+                    @Model.Order.Bookings.Book_DeliveryNote
+
+                </p>
+            </div>
+            <div class="col-4 border border-dark">
+                <main>
+                    <div id="output"></div>
+
+                </main>
+                <h4>Order Information</h4>
+                <p class="lead">Tracking Number: @Model.Track_ID</p>
+                <p>Pickup Date: @Model.Order.Bookings.Book_PickupDate</p>
+                <p>Delivery Date: @Model.Order.Bookings.Book_DeliveryDate</p>
+                <h4>Shipping From</h4>
+                <p>@Model.Order.Bookings.Client.Client_Name @Model.Order.Bookings.Client.Client_Surname</p>
+                <p>@Model.Order.Bookings.Quote.Quote_PickupAddress</p>
+                <h4>Shipping To</h4>
+                <p>@Model.Order.Bookings.Book_RecipientName @Model.Order.Bookings.Book_RecipientSurname</p>
+                <p>@Model.Order.Bookings.Quote.Quote_DeliveryAddress</p>
+
+            </div>
+        </div>
+        <hr />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Item Description</th>
+                    <th scope="col">Item Weight</th>
+                    <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">@Model.Order.Bookings.Quote.Quote_Description</td>
+                    <td>@Model.Order.Bookings.Quote.Quote_Weight</td>
+                    <td>@Model.Order.Bookings.Quote.Item_Quantity</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-faded">
+                    <div class="card-header">
+                        Messenger King
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            Thank you for choosing Messenger king as your preferred courier service. We strive to provide the best
+                            service delivery for our clients.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        @*<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>*@
+
+        <script>
+            var url = 'https://2020grp01.azurewebsites.net/Trackings/QrRedirect/'+'@Model.Track_ID'
+            let qrcode = new QRCode("output", {
+                text: url,
+                width: 500,
+                height: 500,
+                colorDark: "#990000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+
+        </script>
+    </body>
+
+    </html>

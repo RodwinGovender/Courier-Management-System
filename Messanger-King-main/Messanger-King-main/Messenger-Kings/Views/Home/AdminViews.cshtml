@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "AdminViews";
+}
+
+<br />
+<br />
+<div class="d-print-none">
+    <div class="col-md-2">
+        <br />
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Account Categories
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @Html.ActionLink("Add Account Category", "Create", "AccountCategories")<br />
+                @Html.ActionLink("View All Categories", "Index", "AccountCategories")<br />
+            </div>
+        </div>
+        <br />
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Bank Categories
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @Html.ActionLink("Add Bank Category", "Create", "BankCategories")<br />
+                @Html.ActionLink("View All Categories", "Index", "BankCategories")<br />
+            </div>
+        </div>
+        <br />
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Client Categories
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @Html.ActionLink("Add Client Category", "Create", "ClientCategories")<br />
+                @Html.ActionLink("View All Categories", "Index", "ClientCategories")<br />
+            </div>
+        </div>
+        <br />
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Drivers
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @Html.ActionLink("View All Drivers", "Index", "Drivers")<br />
+
+            </div>
+        </div>
+        <br />
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Documents
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @Html.ActionLink("View Client Document", "Index", "Documents")<br />
+            </div>
+        </div>
+        <br />
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Quotes
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @Html.ActionLink("View All Quotes", "Index", "Quotes")<br />
+            </div>
+        </div>
+        <br />
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Pending Orders
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                @Html.ActionLink("Recent Bookings", "OrderList", "Orders")<br />
+                @Html.ActionLink("View Approved Orders", "Index", "Orders")<br />
+            </div>
+        </div>
+        <br />
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Rates
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                @Html.ActionLink("Add Rates", "Create", "Rates")<br />
+                @Html.ActionLink("View Current Rates", "Index", "Rates")<br />
+            </div>
+        </div>
+        <br />
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Roles
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                @Html.ActionLink("Add Role", "AddRole", "Roles")<br />
+                @Html.ActionLink("View Current Roles", "Index", "Roles")<br />
+            </div>
+        </div>
+        <br />
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Waybills
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                @Html.ActionLink("Print Waybills", "WaybillList", "Trackings")<br />
+                @Html.ActionLink("View all Past Waybills", "AllWaybills", "Trackings")<br />
+            </div>
+        </div>
+        <br />
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Warehouse Inventory
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                @Html.ActionLink("View stored Packages", "Index", "Waybills")<br />
+                @*@Html.ActionLink("View Current Rates", "Index", "Roles")<br />*@
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "ClientOrderStat";
+}
+
+<h2>ClientOrderStat</h2>
+
+<html>
+
+<head>
+    <style>
+        td {
+            padding: 0 15px;
+        }
+    </style>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        // Load Charts and the corechart package.
+        google.charts.load('current', { 'packages': ['corechart'] });
+
+        google.charts.load('current', { 'packages': ['bar'] });
+
+        // Draw the pie chart for Sarah's pizza when Charts is loaded.
+        google.charts.setOnLoadCallback(drawSarahChart);
+
+        // Draw the pie chart for the Anthony's pizza when Charts is loaded.
+        google.charts.setOnLoadCallback(drawStuff);
+
+        // Callback that draws the pie chart for Sarah's pizza.
+
+        function drawSarahChart() {
+
+            // Create the data table for Sarah's pizza.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows([
+                ['On  Contract', @ViewBag.totContract1],
+                ['Pay as you go', @ViewBag.totPay1]
+
+            ]);
+
+            // Set options for Sarah's pie chart.
+            var options = {
+                title: 'Type Of Clients',
+                width: 500,
+                height: 400
+            };
+
+            // Instantiate and draw the chart for Sarah's pizza.
+            var chart = new google.visualization.PieChart(document.getElementById('Sarah_chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+
+    <!--Table and divs that hold the pie charts-->
+    <table class="columns">
+        <tr>
+            <td><div id="Sarah_chart_div" style="border: 1px solid #ccc"></div></td>
+
+            <td><div id="Anthony_chart_div" style="border: 1px solid #ccc"></div></td>
+        </tr>
+    </table>
+    <hr />
+    <h2>Other Statistics</h2>
+    <dl>
+        <dt>Total number of Clients:</dt>
+        <dd>= @ViewBag.Customers1</dd>
+        <dt>Total number of Orders</dt>
+        <dd>= @ViewBag.totalOrders1</dd>
+    </dl>
+</body>
+</html>
+

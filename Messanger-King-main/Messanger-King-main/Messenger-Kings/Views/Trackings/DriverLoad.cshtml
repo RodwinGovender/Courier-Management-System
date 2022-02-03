@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Messenger_Kings.Models.Tracking>
+
+@{
+    ViewBag.Title = "DriverLoad";
+}
+
+<h2>DriverLoad</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Order.Driver_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Track_Message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Out_for_delivery)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pickup_Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Delivery_Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order.Driver_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Track_Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order_Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Out_for_delivery)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pickup_Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Delivery_Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Track_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Track_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Track_ID })
+        </td>
+    </tr>
+}
+
+</table>

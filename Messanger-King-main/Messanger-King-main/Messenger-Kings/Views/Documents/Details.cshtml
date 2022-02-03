@@ -1,0 +1,42 @@
+﻿@model Messenger_Kings.Models.Document
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Document</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.Client_IDNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.Client_IDNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Documents)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Documents)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Document_Residence)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Document_Residence)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Documents_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Messenger_Kings.Models.Driver>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List Of Drivers</h2>
+
+<hr />
+<br />
+<div class="row">
+
+
+    @foreach (var item in Model)
+    {
+    <div class="col-md-3">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <div class="card" style="width:250px">
+                @if (item.Diver_Image != null)
+                {
+                    var base64 = Convert.ToBase64String(item.Diver_Image);
+                    var ImgSource = string.Format("data:image/gif;base64,{0}", base64);
+                    <img class="card-img-top" src="@ImgSource" alt="Card image" width="250" height="250" />
+                }
+                <div class="card-body">
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Driver_Name)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Driver_Surname)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Driver_Address)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Driver_Email)</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+            }
+        
+
+    </div>

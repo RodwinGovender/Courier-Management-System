@@ -1,0 +1,19 @@
+﻿@model Messenger_Kings.Models.Document
+
+@{
+    ViewBag.Title = "fullScreenId";
+}
+
+<style>
+    .table{padding:30px;}
+</style>
+<div class="table">
+    
+            @if (Model.Document_ID != null)
+            {
+                var base64 = Convert.ToBase64String(Model.Document_ID);
+                var imgsrc = string.Format("data:application/pdf;base64,{0}", base64);
+                <embed src='@imgsrc' height="700" width="100%" />
+            }
+       
+</div>

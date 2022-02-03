@@ -1,0 +1,70 @@
+﻿
+@model Messenger_Kings.Models.Tracking
+
+@{
+    ViewBag.Title = "Store";
+}
+
+<h2>Warehouse Check In/Out</h2>
+
+<hr/>
+
+<br />
+<br />
+<br />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<center>
+    @if (TempData["Success"] == null)
+    {
+        <h4>Scan a bardcode or Enter the Tracking number to continue</h4>
+    }
+    else
+    {
+       <h4>@TempData["Success"]</h4>
+    }
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    @Html.HiddenFor(model => model.Order_ID)
+
+    @Html.HiddenFor(model => model.Delivery_Status)
+    @Html.HiddenFor(model => model.Out_for_delivery)
+    @Html.HiddenFor(model => model.Order_Status)
+    @Html.HiddenFor(model => model.Track_Message)
+    @Html.HiddenFor(model => model.Pickup_Status)
+
+
+
+
+    <div class="form-group">
+
+
+        Enter Tracking Number :   @Html.EditorFor(model => model.Track_ID, new { htmlAttributes = new { @class = "form-control" } })   <br />  <input type="submit" value="Enter" class="btn btn-primary" />
+        <br />
+        <br />
+        <text> <span style="color:red;">  @ViewBag.Error</span> </text>
+    </div>
+
+
+</center>
+
+
+
+
+        <div>
+            @*@Html.ActionLink("Track Another Package", "Index")*@
+        </div>
+
+
+
+        }
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

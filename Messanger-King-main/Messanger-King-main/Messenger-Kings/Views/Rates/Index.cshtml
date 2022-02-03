@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Messenger_Kings.Models.Rate>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>View All Rates</h2>
+
+<p>
+   
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientCategory.ClientCat_Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Base_Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate_PerCM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate_PerKG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate_PerKM)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientCategory.ClientCat_Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Base_Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rate_PerCM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rate_PerKG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rate_PerKM)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Rate_ID }) 
+           
+        </td>
+    </tr>
+}
+
+</table>

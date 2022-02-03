@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Messenger_Kings.Models.Waybill>
+
+@{
+    ViewBag.Title = "Warehouse Management";
+}
+
+<h2>Warehouse Index</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+@using (Html.BeginForm("Index", "Waybills", FormMethod.Get))
+{
+    <b> Search Option: </b>@Html.RadioButton("option", "All Packages") <text>All Packages</text> @Html.RadioButton("option", "Packages In Warehouse") <text> Packages In Warehouse </text> @Html.TextBox("search", null, new { placeholder = "eg: MK-287448972" })
+    <input type="submit" name="submit" value="Search" class="btn btn-secondary btn-sm"/>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Track_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status.Storage_Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tracking.Track_Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date_Packages_CheckedIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date_Packages_CheckedOut)
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Track_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status.Storage_Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tracking.Track_Message)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date_Packages_CheckedIN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date_Packages_CheckedOut)
+                </td>
+
+                <td>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Waybill_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Waybill_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Waybill_ID })*@
+                </td>
+            </tr>
+        }
+
+    </table>
+}

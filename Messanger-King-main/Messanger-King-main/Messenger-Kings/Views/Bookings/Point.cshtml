@@ -1,0 +1,22 @@
+﻿
+@model Messenger_Kings.Models.Booking
+
+@{
+    ViewBag.Title = "Point";
+}
+
+<h2>Point</h2>
+<div class="row">
+
+    @*<a href='@Url.Action("Index", "Bookings")' class="btn btn-warning">View My Orders</a>
+
+
+        add details of package
+
+        <a href='@Url.Action("Index", "Home")' class="btn btn-secondary">Back to Home</a>*@
+
+
+
+    <a @Html.ActionLink("pakehjrghfjwlekafsc", "Edit", new { id = Model.Book_ID }) class="btn btn-primary"></a>|
+    <a @Html.ActionLink("Pay", "Edit", new { id = Model.Book_ID }) class="btn btn-primary"></a>|
+</div>

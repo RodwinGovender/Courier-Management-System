@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Messenger_Kings.Models.Tracking>
+
+@{
+    ViewBag.Title = "DeliveryList";
+}
+
+<h2>My Delivery/Pickup List</h2>
+
+<hr/>
+<br/>
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-3">
+            <div class="shadow p-3 mb-5 bg-white rounded">
+
+                <p>Client Name: @Html.DisplayFor(modelItem => item.Order.Bookings.Client.Client_Name)</p>
+                <p>Item(s) description: @Html.DisplayFor(modelItem => item.Order.Bookings.Quote.Quote_Description)</p>
+               
+                    <p>Pick-up date: @Html.DisplayFor(modelItem => item.Order.Bookings.Book_PickupDate)</p>                            
+                    <p>Delivery date: @Html.DisplayFor(modelItem => item.Order.Bookings.Book_DeliveryDate)</p>
+                
+                @*<a href='@Url.Action("Edit", "Trackings", new { id = item.Order.Order_ID }, null)' class="btn btn-success">Select</a>*@
+                <a href='@Url.Action("Index", "Maps", new { id = item.Order.Order_ID }, null)' class="btn btn-success">Navigate To Location</a>
+            </div>
+        </div>
+    }
+</div>

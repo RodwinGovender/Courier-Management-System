@@ -1,0 +1,108 @@
+﻿@model Messenger_Kings.Models.Driver
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>My Details</h2>
+
+
+
+<hr /><br />
+<div class="row">
+  
+        <div class="col-md-3">
+
+            <div class="container">
+                <div class="card" style="width:250px">
+                    @if (Model.Diver_Image != null)
+                    {
+                        var base64 = Convert.ToBase64String(Model.Diver_Image);
+                        var ImgSource = string.Format("data:image/gif;base64,{0}", base64);
+                        <img class="card-img-top" src="@ImgSource" alt="Card image" width="250" height="250" />
+                    }
+                <div class="card-body">
+                    <p class="card-text">@Html.DisplayFor(modelItem => Model.Driver_Name)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => Model.Driver_Surname)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => Model.Driver_Address)</p>
+                    <p class="card-text">@Html.DisplayFor(modelItem => Model.Driver_Email)</p>
+                   
+                    <div class="row">                    
+                        <a href='@Url.Action("Edit", "Drivers", new { id = Model.Driver_ID}, null)' class="btn btn-primary">Update My Details</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+@*<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diver_Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diver_Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver_IDNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver_IDNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver_Name)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver_Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver_Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver_CellNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver_CellNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver_Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver_Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver_Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Driver_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
